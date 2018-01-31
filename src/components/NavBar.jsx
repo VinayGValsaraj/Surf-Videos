@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Title } from 'grommet';
+import { Title, Box } from 'grommet';
 
 import styled from 'styled-components';
 import Search from './Search.jsx';
@@ -9,7 +9,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   display: flex;
-  padding: 1.5em 5em;
+  padding: 1em 5em;
 
   border: 1px lightgrey;
   border-style: none none solid;
@@ -24,7 +24,7 @@ class NavBar extends React.Component {
     };
   }
 
-  toggleSearch() {
+  toggleSearch = () => {
     let searchToggle = !this.state.searchToggle
     this.setState({searchToggle: searchToggle})
   }
@@ -36,7 +36,12 @@ class NavBar extends React.Component {
         <Title style = {searchToggle ? {visibility: "hidden"} : {}}>
           Surf Videos
         </Title>
-        <Search toggleSearch={this.toggleSearch} />
+        <Box flex={true}
+          justify='end'
+          direction='row'
+          align='center'>
+          <Search toggleSearch={this.toggleSearch} />
+        </Box>
       </Container>
     )
   }
