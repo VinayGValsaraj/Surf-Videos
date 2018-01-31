@@ -2,6 +2,8 @@ import React from 'react';
 import { Paragraph } from 'grommet';
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 const ResponsiveTile = styled.div`
   display: inline-block;
   width: 16.6%;
@@ -26,15 +28,18 @@ const Channel = styled.div`
 `
 
 function Tile(props) {
+  var url = "/play/" + props.video.id.videoId;
   return (
-    <ResponsiveTile>
-      <img src={props.video.snippet.thumbnails.high.url}/>
-      <TextBox>
-        <TileTitle>{props.video.snippet.title}</TileTitle>
-        <Channel>{props.video.snippet.channelTitle}</Channel>
-        <div>{props.video.snippet.description}</div>
-      </TextBox>
-    </ResponsiveTile>
+    <Link to={url}>
+      <ResponsiveTile>
+        <img src={props.video.snippet.thumbnails.high.url}/>
+        <TextBox>
+          <TileTitle>{props.video.snippet.title}</TileTitle>
+          <Channel>{props.video.snippet.channelTitle}</Channel>
+          <div>{props.video.snippet.description}</div>
+        </TextBox>
+      </ResponsiveTile>
+    </Link>
   )
 }
 
