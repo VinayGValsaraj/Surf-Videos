@@ -3,6 +3,7 @@ import { Paragraph } from 'grommet';
 import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
+import { buildVideoURL } from '../lib/TextUtils.js'
 
 const ResponsiveTile = styled.div`
   display: inline-block;
@@ -28,9 +29,8 @@ const Channel = styled.div`
 `
 
 function Tile(props) {
-  var url = "/play/" + props.video.id.videoId;
   return (
-    <Link to={url}>
+    <Link to={buildVideoURL(props.video.id.videoId)}>
       <ResponsiveTile>
         <img src={props.video.snippet.thumbnails.high.url}/>
         <TextBox>
