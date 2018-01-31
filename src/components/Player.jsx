@@ -1,6 +1,16 @@
 import React from 'react';
 import YouTube from 'react-youtube';
 
+import styled from 'styled-components';
+
+const PlayerBox = styled.div`
+  text-align: center;
+  margin-top: 2em;
+`
+
+const StyledYouTube = styled(YouTube)`
+  max-width: 100%;
+`
 
 function Player(props) {
   const opts = {
@@ -12,10 +22,12 @@ function Player(props) {
   };
   console.log(props);
   return(
-    <YouTube
-      videoId={props.match.params.id}
-      opts={opts}
-    />
+    <PlayerBox>
+      <StyledYouTube
+        videoId={props.match.params.id}
+        opts={opts}
+      />
+    </PlayerBox>
   );
 }
 
