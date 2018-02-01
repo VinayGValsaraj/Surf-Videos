@@ -6,7 +6,9 @@ class ShowListing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      vids: []
+      vids: [],
+      nextPageToken: "",
+      url: props.url
     };
   }
 
@@ -22,18 +24,27 @@ class ShowListing extends React.Component {
         }
         throw new Error('Network response was not ok.');
       }).then((json) => {
-        this.setState({vids:json.items});
+        let newVids = this.state.vids.concat(json.items);
+        this.setState({vids:newVids, nextPageToken: json.nextPageToken});
         console.log(this.state);
       });
   }
 
+  getMoreVids = () => {
+    var url = this.state.url;
+    url += "&pageToken=";
+    url += this.state.nextPageToken;
+
+    this.getVids(url);
+  }
+
   componentWillMount() {
-    this.getVids(this.props.url);
+    this.getVids(this.state.url);
   }
 
   render() {
     return(
-      <Listing vids={this.state.vids}/>
+      <Listing vids={this.state.vids} getMoreVids={this.getMoreVids}/>
     )
   }
 }
