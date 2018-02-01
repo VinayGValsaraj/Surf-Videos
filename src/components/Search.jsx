@@ -54,13 +54,20 @@ class Search extends React.Component {
     this.props.toggleSearch();
   }
 
+  componentDidUpdate() {
+    if (this.state.toggle) {
+      this.searchInput.focus();
+    }
+  }
+
   render() {
     const { toggle, term } = this.state;
 
     return (
       <Container>
         <ResponsiveForm onSubmit={this.submit} toggle={toggle}>
-          <InputBox onChange={this.changeTerm} placeholder="Search"/>
+          <InputBox innerRef={(input) => { this.searchInput = input; }}
+          onChange={this.changeTerm} placeholder="Search"/>
         </ResponsiveForm>
         <SearchIconWrapper onClick={this.toggleForm} icon= {toggle ? <CloseIcon /> : <SearchIcon /> }
         />

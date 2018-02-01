@@ -46,7 +46,7 @@ class NavBar extends React.Component {
           justify='end'
           direction='row'
           align='center'>
-          <StyledMenu>
+          <StyledMenu style = {searchToggle ? {visibility: "hidden"} : {}}>
             <NavLink to='/'>Videos</NavLink>
           </StyledMenu>
           <Search toggleSearch={this.toggleSearch} />
