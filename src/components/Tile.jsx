@@ -12,12 +12,13 @@ const ResponsiveTile = styled.div`
   padding: 0.5em;
 `
 
-const TextBox = styled(Paragraph)`
+const TextBox = styled.div`
   max-width: unset;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #666;
 `
 
 const TileTitle = styled.div`
