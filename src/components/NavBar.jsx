@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Title, Box } from 'grommet';
+import { Title, Box, Anchor } from 'grommet';
+import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
 import Search from './Search.jsx';
@@ -13,6 +14,11 @@ const Container = styled.div`
 
   border: 1px lightgrey;
   border-style: none none solid;
+`
+
+const StyledAnchor = styled(Anchor)`
+  font-size: 1.2em;
+  margin-right: 25px;
 `
 
 class NavBar extends React.Component {
@@ -40,6 +46,9 @@ class NavBar extends React.Component {
           justify='end'
           direction='row'
           align='center'>
+          <StyledAnchor>
+            <NavLink to='/'>Videos</NavLink>
+          </StyledAnchor>
           <Search toggleSearch={this.toggleSearch} />
         </Box>
       </Container>
