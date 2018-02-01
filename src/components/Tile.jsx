@@ -10,6 +10,19 @@ const ResponsiveTile = styled.div`
   width: 16.6%;
   vertical-align: top;
   padding: 0.5em;
+
+  @media all and (max-width: 1280px) {
+    width: 20%;
+  }
+  @media all and (max-width: 1024px) {
+    width: 25%;
+  }
+  @media all and (max-width: 768px) {
+    width: 33.33%;
+  }
+  @media all and (max-width: 480px) {
+    width: 50%;
+  }
 `
 
 const TextBox = styled.div`
@@ -29,6 +42,12 @@ const Channel = styled.div`
   font-weight: 500;
 `
 
+const Description = styled.div`
+  @media all and (max-width: 670px) {
+    display: none;
+  }
+`
+
 function Tile(props) {
   return (
     <Link to={buildVideoURL(props.video.id.videoId)}>
@@ -37,7 +56,7 @@ function Tile(props) {
         <TextBox>
           <TileTitle>{props.video.snippet.title}</TileTitle>
           <Channel>{props.video.snippet.channelTitle}</Channel>
-          <div>{props.video.snippet.description}</div>
+          <Description>{props.video.snippet.description}</Description>
         </TextBox>
       </ResponsiveTile>
     </Link>
