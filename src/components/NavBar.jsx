@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Title, Box, Anchor } from 'grommet';
+import { Title, Box, Menu } from 'grommet';
 import { NavLink } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -16,7 +16,7 @@ const Container = styled.div`
   border-style: none none solid;
 `
 
-const StyledAnchor = styled(Anchor)`
+const StyledMenu = styled(Menu)`
   font-size: 1.2em;
   margin-right: 25px;
 `
@@ -46,9 +46,9 @@ class NavBar extends React.Component {
           justify='end'
           direction='row'
           align='center'>
-          <StyledAnchor>
+          <StyledMenu>
             <NavLink to='/'>Videos</NavLink>
-          </StyledAnchor>
+          </StyledMenu>
           <Search toggleSearch={this.toggleSearch} />
         </Box>
       </Container>
