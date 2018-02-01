@@ -26,8 +26,8 @@ class Listing extends React.Component {
   render() {
     return (
       <Grid>
-        {this.props.vids.map(item =>
-        <Tile video={item}/>)}
+        {this.props.vids.map((item, index) =>
+        <Tile key={index} video={item}/>)}
       </Grid>
     )
   }
