@@ -46,7 +46,6 @@ class Search extends React.Component {
 
   submit = (e) => {
     this.setState({submitted: true})
-    e.preventDefault()
   }
 
   toggleForm = () => {
