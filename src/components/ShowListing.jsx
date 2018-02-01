@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Listing from './Listing.jsx';
+import Listing from './Listing';
 
-class ShowResults extends React.Component {
+class ShowListing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,11 +10,8 @@ class ShowResults extends React.Component {
     };
   }
 
-  componentWillMount() {
-    var searchQuery = this.props.match.params.query.replace(/ /g, '+');
-    var searchURL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBeimXtjgzfQcogY-fP8_CHPybmLpFaieo&part=snippet&type=video&maxResults=30&q=surf";
-    searchURL += "+" + searchQuery;
-    fetch(searchURL, {
+  getVids = (url) => {
+    fetch(url, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -30,9 +27,15 @@ class ShowResults extends React.Component {
       });
   }
 
+  componentWillMount() {
+    this.getVids(this.props.url);
+  }
+
   render() {
-    return(<Listing vids={this.state.vids}/>);
+    return(
+      <Listing vids={this.state.vids}/>
+    )
   }
 }
 
-export default ShowResults;
+export default ShowListing;
