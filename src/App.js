@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import GrommetApp from 'grommet/components/App';
 import { Box } from 'grommet';
@@ -24,6 +23,7 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route path="/search/:query" component={SearchResults}/>
               <Route path="/play/:id" component={Player}/>
+              <Route render={props => (<div>404 Not Found.</div>)} />
             </Switch>
           </Box>
         </GrommetApp>
